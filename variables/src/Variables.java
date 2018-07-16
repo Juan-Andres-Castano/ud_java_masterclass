@@ -18,10 +18,37 @@ public class Variables {
 
         //long has a width of 64  2exp63
         long myLongValue = 9_223_372_036_854_775_807L;
+// float = 32 (4 bytes)
+        // double 64 ( 8 bytes) --recommended to use
+        float myFloat = 5.25f;
+
+        double mydouble = 5d;
+
+        float my2floa = (float)mydouble;
+        System.out.println("my float value is : " + myFloat);
+
+        System.out.println("my double value is : " + mydouble);
+
+        int myFirstNumber2 =  5/2;
+        float valie = 5f / 2f ;
+
+        //  System.out.println(myFirstNumber); //sout + tab
+        System.out.println("myFirstNumber2 is "+myFirstNumber2); //sout + tab
+        System.out.println("my valie value is : " + valie);
 
 
-     //   System.out.println(myFirstNumber); //sout + tab
-     //   System.out.println("myFirstNumber"); //sout + tab
+
+        char myChar = '\u00A9';
+        System.out.println("my myChar value is : " + myChar);
+
+        boolean myBoolean = false;
+
+        String myString = " this is a string";
+        System.out.println("my myString value is : " + myString);
+        myString = myString + " and more. " ;
+        System.out.println("my myString value is : " + myString);
+        myString = myString + "\u00A9 2015. " ;
+        System.out.println("my myString value is : " + myString);
 
     }
 }
