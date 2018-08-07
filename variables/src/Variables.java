@@ -36,6 +36,18 @@ public class Variables {
         System.out.println("myFirstNumber2 is "+myFirstNumber2); //sout + tab
         System.out.println("my valie value is : " + valie);
 
+        int ik = calculateScore(true,34,2);
+
+        //calculateScore(true,2,12);
+        if(ik==2){
+            System.out.println("my YEPP ");
+        }
+    }
+
+
+    public static int calculateScore(boolean gameOver, int score, int levelCompleted){
+
+
 
 
         char myChar = '\u00A9';
@@ -49,6 +61,16 @@ public class Variables {
         System.out.println("my myString value is : " + myString);
         myString = myString + "\u00A9 2015. " ;
         System.out.println("my myString value is : " + myString);
+            if(gameOver){
+                int finalSore = score * 100;
 
+                System.out.println("my finalScore value is : " + finalSore);
+                System.out.println("my levelCompleted value is : " + levelCompleted);
+
+                double kilometers = (100 * 1.64564);
+            }
+
+            return 2;
     }
+
 }
