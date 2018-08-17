@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_lecture_1_sr" default="compile.module.lecture_1_sr">
+  <dirname property="module.lecture_1_sr.basedir" file="${ant.file.module_lecture_1_sr}"/>
+  
+  <property name="module.jdk.home.lecture_1_sr" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.lecture_1_sr" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.lecture_1_sr" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.lecture_1_sr" value="-encoding UTF-8 -source 10 -target 10 ${compiler.args}"/>
+  
+  <property name="lecture_1_sr.output.dir" value="${module.lecture_1_sr.basedir}/out/production/lecture_1_sr"/>
+  <property name="lecture_1_sr.testoutput.dir" value="${module.lecture_1_sr.basedir}/out/test/lecture_1_sr"/>
+  
+  <path id="lecture_1_sr.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="lecture_1_sr.module.production.classpath">
+    <path refid="${module.jdk.classpath.lecture_1_sr}"/>
+  </path>
+  
+  <path id="lecture_1_sr.runtime.production.module.classpath">
+    <pathelement location="${lecture_1_sr.output.dir}"/>
+  </path>
+  
+  <path id="lecture_1_sr.module.classpath">
+    <path refid="${module.jdk.classpath.lecture_1_sr}"/>
+    <pathelement location="${lecture_1_sr.output.dir}"/>
+  </path>
+  
+  <path id="lecture_1_sr.runtime.module.classpath">
+    <pathelement location="${lecture_1_sr.testoutput.dir}"/>
+    <pathelement location="${lecture_1_sr.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.lecture_1_sr">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.lecture_1_sr">
+    <patternset refid="excluded.from.module.lecture_1_sr"/>
+  </patternset>
+  
+  <path id="lecture_1_sr.module.sourcepath">
+    <dirset dir="${module.lecture_1_sr.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.lecture_1_sr" depends="compile.module.lecture_1_sr.production,compile.module.lecture_1_sr.tests" description="Compile module lecture_1_sr"/>
+  
+  <target name="compile.module.lecture_1_sr.production" depends="register.custom.compilers" description="Compile module lecture_1_sr; production classes">
+    <mkdir dir="${lecture_1_sr.output.dir}"/>
+    <javac2 destdir="${lecture_1_sr.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.lecture_1_sr}/javac">
+      <compilerarg line="${compiler.args.lecture_1_sr}"/>
+      <bootclasspath refid="lecture_1_sr.module.bootclasspath"/>
+      <classpath refid="lecture_1_sr.module.production.classpath"/>
+      <src refid="lecture_1_sr.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.lecture_1_sr"/>
+    </javac2>
+    
+    <copy todir="${lecture_1_sr.output.dir}">
+      <fileset dir="${module.lecture_1_sr.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.lecture_1_sr.tests" depends="register.custom.compilers,compile.module.lecture_1_sr.production" description="compile module lecture_1_sr; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.lecture_1_sr" description="cleanup module">
+    <delete dir="${lecture_1_sr.output.dir}"/>
+    <delete dir="${lecture_1_sr.testoutput.dir}"/>
+  </target>
+</project>
